@@ -1,22 +1,20 @@
-Welcome to Lumache's documentation!
-===================================
+Welcome to the Bi-directional Services e-Referral (BSeR) Technical Guidebook!
+=============================================================================
 
-**Lumache** (/lu'make/) is a Python library for cooks and food lovers
-that creates recipes mixing random ingredients.
-It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
-and offers a *simple* and *intuitive* API.
+**Bi-directional Services e-Referrals** (BSeR) facilitate extra-clinical aspects of continuity of care by enabling healthcare provider referrals to community programs. This system leverages referring provider “stickiness”, it sends only necessary referral data, and includes the ability to receive feedback from extra-clinical program progress.
 
-Check out the :doc:`usage` section for further information, including
-how to :ref:`installation` the project.
+Check out the :doc:`4_bser_overview` page for further information about BSeR.
 
 .. note::
 
    This project is under active development.
 
-Contents
---------
-
 .. toctree::
+   :hidden:
 
-   usage
-   api
+   1_fhir
+   2_fhir_ig
+   3_sdoh_gravity_ig
+   4_bser_overview
+   5_bser_fhir_ig
+   6_bser_ref_imp
