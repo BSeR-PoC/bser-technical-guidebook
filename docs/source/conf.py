@@ -28,9 +28,10 @@ intersphinx_disabled_domains = ['std']
 templates_path = ['_templates']
 
 # -- Options for HTML output
-
+html_static_path = ["_static"]
 html_theme = 'sphinx_immaterial'
 html_title = 'BSeR Technical Guidebook'
+html_logo = "_static/site-logo.svg"
 
 html_theme_options = {
     "icon": {
