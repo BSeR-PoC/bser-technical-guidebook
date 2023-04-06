@@ -134,5 +134,6 @@ A common feature found in profiles in a FHIR IG is slicing. Slicing is the act o
 
 .. image:: 
    images/fhir_slicing.png
+   :width: 320pt
    :alt: FHIR Slicing 
    
