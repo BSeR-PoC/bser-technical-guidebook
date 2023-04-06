@@ -163,3 +163,56 @@ US Core Patient
 ^^^^^^^^^^^^^^^
 Shown below is the differential table from the US Core Patient Profile:
 
+.. image:: 
+   images/fhir_patient.png
+   :width: 500pt
+   :alt: FHIR Patient Resource 
+
+From this table, there are three extensions defined that have a cardinality of 0..1, with two of them being “(Complex)” extensions and one being a code. These extensions will be covered in the Examples section below for extensions, as well as what “(Complex)” extensions are. There are a total of 18 elements that have been flagged as mustSupport (as defined above) and three mandatory top-level elements (compared to the base Patient which has 0 mandatory top-level elements). On Patient.name, the invariant previously mentioned has been applied to this element, indicating that an instance of a resource claiming conformance to this profile must follow that invariant.
+
+US Core Laboratory Result Observation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Shown below is the differential table from the US Core Laboratory Result Observation Profile:
+
+.. image:: 
+   images/fhir_observation.png
+   :width: 500pt
+   :alt: FHIR Observation Resource 
+
+In this differential table, you can see an example of slicing that was mentioned before. For this example, the profile changed the cardinality of category from 0..* in the base Observation to 1..* for this profile, indicating that there should be at least one category code associated with an instance of a resource conforming to this profile. In this case, the slice “Laboratory” has a cardinality of 1..1 and has a fixed value of laboratory, indicating that this category code will appear in every instance of a resource conforming to this profile. Because the cardinality is 1..*, other category codes could be included, but those do not have any additional constraints beyond the base specification. 
+
+For this profile, there are 12 mustSupport flags and four mandatory top-level elements. For Observation.code, there is an example of the profile changing the binding strength for the associated value set. In the base specification, the value set “LOINCCodes” has a binding of example, but for this profile, it has a strength of “extensible.” There are also four invariants applied to this profile, one for the entire Observation and three for individual elements within the resource. It’s also demonstrated here the concept of mustSupport and constraints. For Observation.value[x], there are mustSupport flags on three of the data types, but the other data types from the base specification are still allowed.
+
+Extensions
+----------
+Sometimes when profiling FHIR for your use case, you may come across a situation where you don’t need to limit a resource, but rather add elements. This is where Extensions come in, they can be added to any data element (from the base resource down to the most nested element) to represent additional information that is not present in the base resource. Extensions must contain a URL to define what it means to have that extension as well as a value[x] element (see Restricting a Choice Element to hear more about value[x], as well as go to Open Type Element to see the full list of datatypes this element can have). 
+
+Sometimes, you may need to have multiple values to represent the full meaning of an extension and instead of doing multiple extensions, you can have an extension which contains sub-extensions. This is referred to as a complex extension, and excellent examples of this are the US Core Race and Ethnicity extensions. Both contain three sub-extensions: a required extension with a url of ombCategory and a valueCoding from the OMB Race Categories ValueSet, an optional extension with a url of detailed and a valueCoding from the Detailed Race ValueSet, and a required extension with a url of text and a valueString. The StructureDefinition for the US Core Race extension is shown below:
+
+.. image:: 
+   images/fhir_extension.png
+   :width: 500pt
+   :alt: FHIR Extension 
+
+Another rule to note with using sub-extensions that you can see demonstrated in the StructureDefinition above: you cannot have sub-extensions as well as a value[x] element, this muddies the meaning of the extension. 
+
+Another concept that can be found with extensions is the presence of an is-Modifier flag, which makes them modifier extensions. A modifier extension is where the information provided in an extension modifies the meaning of the element that contains it. Often, this means information that qualifies or negates the primary meaning of the element that contains it. An example of this is a flag on a [Patient.contact] indicating they are not to be contacted - i.e. a next of kin for record-keeping purposes only. IG developers should try to stay away from modifier extensions wherever possible because it can change the meaning of an element in a resource and can add confusion to data. 
+
+Terminology
+-----------
+CodeSystems
+^^^^^^^^^^^
+Sometimes, a code may not exist for the domain in which an IG is being developed, or a code may need to be used that has not been fully incorporated into a published codesystem. This leads to IG developers needing to create a CodeSystem to contain these codes they may need for providing fixed values or creating a ValueSet binding (more on ValueSets below). The new codesystem needs to have a defined canonical URL that will be used whenever a code from the system is referenced, and all of the defined codes need to have the actual code, a display name, as well as a description. All these items are highly recommended for custom codesystems so an implementer can know what the code means and when it should be used. 
+
+ValueSets
+^^^^^^^^^
+ValueSets are created by IG developers when they would like to constrict a code element to only come from a specific set of codes. This could happen when there’s not an appropriate ValueSet that already exists, when using codes from a custom codesystem that do not exist outside of the IG, or you want to limit or expand an existing ValueSet. 
+
+Instances
+^^^^^^^^^
+Instances are also known as examples, but for this guide, they will be referred to as instances since most IG authoring tools refer to them as such and so they do not become confused with the example type of instances. An instance will conform to a given profile (or base resource if needed) to be considered as an instance of a given profile. Most of the time, instances contain more data that one would find in the resource in a production environment as to show implementers the full use of a profile. There are two main different kinds of instances: example and definition instances. Example instances are named because they are examples of the profiles and extensions found in an IG and will be included on the Examples tab of a profile page. Definition instances are conformance items that is an instance of a resource such as a search parameter, operation definition, or questionnaire, and these items will be presented on their own IG page.
+
+Example Instances
+~~~~~~~~~~~~~~~~~
+Examples instances are created just how you would create any other resource, only now they will be conforming to a certain profile or extension. To mark an example instance as conforming to a profile, there is a profile sub-element in the resource’s meta element that would contain the profile’s canonical URL. So for example, looking at an example that conforms to the US Core Patient, the element Patient.meta.profile[0] would have http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient to indicate that its conformant to that profile. Note the [0] at the end of that FHIRPath, this means that a resource could conform to multiple profiles. 
+
