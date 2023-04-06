@@ -63,7 +63,7 @@ Changing the Cardinality
 Every data element in a FHIR resource has a cardinality: the lower and upper bounds for how often an element can appear in a resource. This is represented in the following notation in the FHIR specification: lower .. upper. The most common cardinalities are 0..1 (not required but the element can only exist once in the instance of a resource), 0..* (not required but the element can exist infinitely many times in the instance of a resource), 1..1 (required but the element can only exist once in the instance of a resource), and 1..* (required but the element can exist infinitely many times in the instance of a resource). This cardinality can only be restricted within the bounds of the base FHIR specification; it cannot be expanded. The table below shows an example of what is and isn’t allowed: 
 
 +------------------------+------+------+------+------+------+
-|       Derived (across) | 0..0 | 0..1 | 0..n | 1..1 | 1..n |
+| Derived (across)       | 0..0 | 0..1 | 0..n | 1..1 | 1..n |
 | Base (down)            |      |      |      |      |      |
 +========================+======+======+======+======+======+
 |  0..1                  | Yes  | Yes  |  No  | Yes  |  No  |
@@ -106,7 +106,7 @@ Value sets must exist somewhere for a data element to have a binding relationshi
 The table below shows how a binding strength could be changed in a profile (note that the constraining profile can change either the strength or the value set of the bidning, but whatever the profile does, it cannot make codes valid that are invalid in the base specification): 
 
 +------------------------+----------+------------+-----------+---------+
-|       Derived (across) | required | extensible | preferred | example |
+| Derived (across)       | required | extensible | preferred | example |
 | Base (down)            |          |            |           |         |
 +========================+==========+============+===========+=========+
 |  requires              | Yes      | No         | No        |     No  |
@@ -127,3 +127,12 @@ The final way explored in this document that a profile can constrict a FHIR reso
 * The system must display the element to the user and/or allow the user to capture the element via the UI 
 * The element must appear in an output report 
 * The element must be considered when performing decision support, calculations, or other processing 
+
+Slicing 
+^^^^^^^
+A common feature found in profiles in a FHIR IG is slicing. Slicing is the act of taking an element that may appear multiple times (for example, in a list) and splitting the list into a series of sub-lists, each with different restrictions on those sub-lists. This is an example taken from the FHIR specification: 
+
+.. image:: 
+   images/fhir_slicing.png
+   :alt: FHIR Slicing 
+   
