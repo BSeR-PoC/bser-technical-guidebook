@@ -134,6 +134,32 @@ A common feature found in profiles in a FHIR IG is slicing. Slicing is the act o
 
 .. image:: 
    images/fhir_slicing.png
-   :width: 320pt
+   :width: 350pt
    :alt: FHIR Slicing 
    
+The base Observation resource is on the left, with the derived Blood Pressure Profile on the right. In this example, we are slicing the data element component into two slices: systolic and diastolic (since there are two components to a blood pressure observation, you would use the component elements with separate codes and values versus having two separate Observations). The component has been sliced into those two slices, each one with a fixed value of the code for systolic and diastolic, respectively, with a restriction on value[x] to be of type Quantity. More information on the details of slicing is found here http://www.hl7.org/fhir/r4/profiling.html#slicing. 
+
+Invariants (or Constraints)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+A profile can also contain what are called either constraints or invariants (invariants will used for the rest of the document to provide clarity between these statements and any changes a profile may make to a resource). These are FHIRPath expressions that must evaluate to true when run against an element in an instance for a resource to be considered conformant to the IG. An example of this is:
+
++------------+--------------+------------------------------------------------------------------------------------------------------+
+| Key        | Path         | Description                                                                                          |
++============+==============+======================================================================================================+
+| us-core-8  | Patient.name | Either Patient.name.given and/or Patient.name.family SHALL be present or a Data Absent Reason        |
+|            |              | Extension SHALL be present: (family.exists() or given.exists()) xor                                  |
+|            |              | extension.where(url=\'http://hl7.org/fhir/StructureDefinition/data-absent-reason\').exists()         |
++------------+--------------+------------------------------------------------------------------------------------------------------+
+
+Formal Views of Profile Content
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Each FHIR IG has a section labeled as “Formal Views of Profile Content,” this section has an interactive box with five different tabs: Text Summary, Differential Table, Snapshot Table, Snapshot Table (Must Support), and All. The “Text Summary” tab gives a summary of the profile: what resource it constrains, how many mandatory and must support elements there are, any other profiles the profile may refer to, and any extensions the profile may refer to. The “Differential Table” tab shows all the elements that the profile has changed: adding a mustSupport flag, restricting the cardinality (indicated with black text versus gray text), restricting the data type, changing the terminology binding, or any invariants that may have been defined for the profile. The “Snapshot Table” tab shows a blend of the differential table and the base resource structure, by showing all elements for this profiled resource. The “Snapshot Table (Must Support)” tab only shows all the data elements that have been flagged with the mustSupport flag. The “All” tab shows all of the previous four views on the same page. 
+
+Examples
+^^^^^^^^
+As mentioned previously, all examples shown in this document come from the US Core FHIR IG.
+
+US Core Patient
+^^^^^^^^^^^^^^^
+Shown below is the differential table from the US Core Patient Profile:
+
