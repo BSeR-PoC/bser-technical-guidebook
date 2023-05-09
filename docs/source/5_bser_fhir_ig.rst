@@ -14,23 +14,28 @@ act of data exchange (e.g., "message" type Bundles, MessageHeaders) as well as t
 "document" type Bundles, individual resources like clinical Observations or the Patient).
 
 Bidirectional Data Exchange and Workflow Management
-^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The BSeR Implementation Guide documents data exchange using a messaging model, wherein a referral initiator, typically a clinical entity, will send a FHIR
 Message Bundle to a recipient, typically a non clincial partner. (Historically, this would be the domain of the HL7v2 messaging standard.)
 
-.. image:: ../images/bser_fhir_ig/messaging.png
+.. image::
+   images/bser_fhir_ig/messaging.png
+   :alt: Basic Messaging Example
 
 The bi-directionality aspect of the implementation guide then expands upon this model, laying out not just the initial messaging but iterative messaging
 between the initiator and recipient. As it is part of a complete messaging cycle, the roles of "initiator" and "recipient" are defined consistently based on
 the *initialization* of the exchang and the entities involved are described this way even in subsequent messages going the opposite direction. The directionality
 of the messages is described as "request" (initiator to recipient) and "feedback" (recipient to feedback).
 
-.. image:: ../images/bser_fhir_ig/bidirectional_messaging.png
+.. image:: 
+   images/bser_fhir_ig/bidirectional_messaging.png
+   :alt: Bidirectional Messaging 
 
-Data exchange
-covers the needed FHIR resources, API expectations, and where relevant security required to support the exchange of BSeR related documents. This is the outer
+In the context of FHIR, the messaging is captured in the guide through FHIR resources or API expectations such as operations. This is the outermost
 layer of the BSeR data structure, starting with the BSeR Referral Message Bundle profile. That profile goes together with the BSeR Referral MessageHeader profile.
 
+Workfow Management
+^^^^^^^^^^^^^^^^^
 Workflow management ties into the message
 
 Data Models
