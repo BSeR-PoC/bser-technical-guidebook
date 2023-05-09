@@ -28,7 +28,7 @@ the *initialization* of the exchang and the entities involved are described this
 of the messages is described as "request" (initiator to recipient) and "feedback" (recipient to feedback).
 
 .. image:: 
-   images/bser_fhir_ig/bidirectional_messaging.png
+   images/bser_fhir_ig/bi_messaging.png
    :alt: Bidirectional Messaging 
 
 In the context of FHIR, the messaging is captured in the guide through FHIR resources or API expectations such as operations. This is the outermost
