@@ -40,8 +40,8 @@ Social Determinants of Health (SDoH) are considered an important area of data in
 Determinants of Health are broad. For the BSeR FHIR IG, collection is limited to employment status, education level, and general demographic information such as
 race and ethnicity.
 
-In healthcare workflows, handling standardized SDoH data is an active area of development. In the U.S., this is tied heavily with the US Core Data for
-Interoperability (USCDI) requirements. To this end, the BSeR FHIR IG is being aligned with the Gravity SDoH for Clinical Care FHIR Implementation Guide. For
-more information on Gravity and SDoH, please see the appropriate sections of this document.
+** TODO: ADD IN A BLURB TO EXPLAIN SDOH DATA COLLECTION FOR THE CDC NEEDS HERE **
 
-The Gravity SDoH home page can be found at https://hl7.org/fhir/us/sdoh-clinicalcare/.
+In healthcare workflows, handling standardized SDoH data is an active area of development. In the U.S., this is tied heavily with the US Core Data for
+Interoperability (USCDI) requirements. For additional information, please see the profile alignment section of this document related to the Gravity SDoH for Clinical
+Care Implementation Guide.

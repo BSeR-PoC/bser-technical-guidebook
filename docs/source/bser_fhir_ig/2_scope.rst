@@ -12,7 +12,7 @@ The BSeR Implementation Guide documents data exchange using a messaging model, w
 Message Bundle to a recipient, typically a non clincial partner. (Historically, this would be the domain of the HL7v2 messaging standard.)
 
 .. image::
-   images/bser_fhir_ig/basic_messaging.png
+   ../images/bser_fhir_ig/basic_messaging.png
    :alt: Basic Messaging Example
 
 The bi-directionality aspect of the implementation guide then expands upon this model, laying out not just the initial messaging but iterative messaging
@@ -21,7 +21,7 @@ the *initialization* of the exchang and the entities involved are described this
 of the messages is described as "request" (initiator to recipient) and "feedback" (recipient to feedback).
 
 .. image:: 
-   images/bser_fhir_ig/bi_messaging.png
+   ../images/bser_fhir_ig/bi_messaging.png
    :alt: Bidirectional Messaging 
 
 In the context of FHIR, the messaging is captured in the guide through FHIR resources or API expectations such as operations. This is the outermost
