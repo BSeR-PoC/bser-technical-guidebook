@@ -15,74 +15,96 @@ stages until the BSeR becomes mature. Figure 1 depicts the architecture.
 **Figure 1**\ : BSeR Reference Implementation Architecture
 
 
-BSeR IG defines two main roles of systems, initiator and recipient. Initiator is a system that composes electronic referral 
-(e-Referral) request and sends to recipient. Recipient on the other hand is a system that consumes the e-referral request(s) 
-and process the request(s). 
+BSeR IG defines two main system roles, initiator and recipient. Initiator is a system in the clinical provider site that composes 
+electronic referral (e-Referral) request and sends to recipient. Recipient on the other hand is a system in the service provider 
+site that consumes the e-referral request(s) and process the request(s). 
 
-Initiator has a BSeR App for clinical provider that performs the following features,
+The initiator has a BSeR App with the following features for the clincal providers,
 
-* SMART on FHIR application that can be launched from EHR's patient chart (EHR launch mode in SMART on FHIR framework). 
-* Authorization to access EHR data by provider(s) 
-* User interface or dashboard for providers to compose the e-Referral message using patient data, service provider organizations, 
-  and specific referral usecase information. 
+* Gets authenticated and authorized using SMART on FHIR application to access patient data.
+* Provides user interface or dashboard for providers to compose the e-Referral request and send to a service provider.
+* View or import feedback data from service provider.
+* Provides an *FHIR messaging operation* endpoint for recipient to send feedbacks
 
-BSeR App should asynchrously wait for feedbacks from recipient. As the feedback messages are sent by recipient asynchronously, 
-BSeR App should match the incoming feedback messages to existing referral cases and update the status of the matching cases. 
-The App do not response to the feedback messages as they are the messages that close the bi-directional messaging loop.
+.. note::
+   Detail information about the *FHIR messaging operation* can be found from https://hl7.org/fhir/R4/messageheader-operation-process-message.html.
+   
+   Although *FHIR messaging operation* is not required by BSeR FHIR IG, it is recommended so that systems can have common 
+   standardized way of exchanging data.
 
-In recipient, BSeR App for service provider is a middleware that acts as a bridge between FHIR and service management platform. 
-BSeR App should provide an endpoint for initiators to send the e-referral request messages to. Although it is not required by 
-BSeR FHIR IG, it is recommended for the recipients to implement the **FHIR Messaging** operation for overall interoperability
-improvement. 
+Users of BSeR App are clinical providers who refer patients to a service provider (recipient). BSeR App in the initiator 
+is to help the users to create the e-referral requests using BSeR FHIR IG and send them to the service providers at the 
+recipient side. Thus, BSeR App should support SMART on FHIR to access patient data. 
 
-BSeR App for service provider may validate the incoming e-Referral requests. However, acceptance or rejection of the referral
-request should not be decided by the App as it is out of scope. The validation should be limited to BSeR FHIR IG and internal 
-policy such as security. The App parses the request and hands over to the service management platform. Here, the interface
-between BSeR App and service management platform can be customized. The architecture neither requires nor recommends the 
-technology used for the interface. As the architecture is designed to support all level of technology capabilities at the
-service providers, the BSeR App should support the interface that will work for the service management platform. This includes
-simple email or file transport for the service providers who do not have the service management software/platform. 
+The recipient has a BSeR App with the following features for service providers,
 
-It is recommended to use the **FHIR messaging** operation to send an e-Referral although it is not required by BSeR FHIR IG. 
-If the **FHIR messaging** operation are used, it will improve overall interoperability implementation because the messaging 
-implementation can be reused for different endpoints without developing custom support for each of endpoints.
+* Bridges between BSeR and service management. 
+* Provides *FHIR messaging operation* endpoint for e-referral request messages.
+* Communicate with a service management interface (e.g. API, Email, SFTP, etc.)
+* Mapping between BSeR FHIR IG data and service management system data.
 
-HTTP 200 or 201 status code should be returned if the message was successfully received by recipients. HTTP 4xx or 5xx 
-status codes can be used if error(s) occurrs. The payload should contain FHIR's OperationOutcome resource to include detail
-error descriptions. 
+The architecture describes the BSeR App in the recicpient to support various interfaces to the service management platform.
+However, not every service provider is equipped with a managment tool. To support such providers, the architecture 
+includes not only APIs but also Emails or File Transfers. Recipient, once receives the e-Referral request, should parse the 
+request, respond to the initiator with a HTTP status, and then hand over the request data to the service management 
+system throught the interface. 
 
+.. note::
+   BSeR App for service provider may respond to the incoming e-Referral requests. However, feedbacks such as ``accepted`` or 
+   ``declined`` should not be determined by the BSeR App. Service management tool or service providers/staff should make
+   the decision and trigger BSeR app to send the feedback messages.
 
+Both e-Referral requests and feedbacks should be responded with a HTTP status code. 
 
-BSeR App for service provider should return HTTP status code 200 or 201 if the referral request was successfully received without
-errors. 4xx or 5xx should be returned if error occured. OperationOutcome can be placed in the payload when error response 
-is sent to the intiator. BSeR App should not send a BSeR feedback message for this. The BSeR feedback message must be initiated
-by the service management platform or service providers. Therefore, the referral request messaging session should be closed
-once the HTTP status code is sent back to the initiator.
+* For success, HTTP 200 or 201 status code if the e-Referral requests or feedbacks are successful received.
+* For errors, HTTP 4xx or 5xx status with OperationOutcome FHIR resources in the payload to include detail error descriptions. 
 
-More details about initiator and recipient will be discussed in the following sections.
 
 Initiator (Clinical Provider)
 -----------------------------
+Proof-of-concept initiator system has been developed based on the architecture and maintained by GTRI. The proof-of-concept
+implementation is depicted in Figure 2. As it is shown in the Figure 2, BSeR App is broken into two part, UI and engien. UI
+provides a dashboard functionality to users and show data elements that need to be captured for each BSeR use case. Once the
+user clicks on the send button, the engine takes the information, construct BSeR FHIR IG based e-referral request and send
+it to the selected recipient. 
 
-Users of initiator are clinical providers who refer patients to a service provider (recipient) and also EHR users. 
-EHR in the initiator should be FHIR enabled. Initiator system should support SMART on FHIR in order to access patient
-data from EHR. 
-
-Developers of BSeR initiator must work with IT of the clinical provider's EHR so that initiator system will comply with 
-the data access policies on reading from and possibly writing to EHR. 
 
 .. image:: 
    images/BSER_RI_Initiator_App.png
    :width: 520pt
-   :alt: BSeR Reference Implementation Architecture 
+   :alt: Proof of Concept Implementation of BSeR Initiator System
 
-**Figure 2**\ : BSeR Reference Implementation Initiator System
+**Figure 2**\ : Proof of Concept Implementation of BSeR Initiator System
 
 
 Recipient (Service Provider)
 ----------------------------
 
-Recipient system needs to parse the e-Referral request messages appropriately based on the use cases defined in the
-BSeR IG. The parsed data should then be delivered to the service management to process the request. The service management 
-should then send feedbacks as responses to the initiator via recipient system during the referred service(s). Feedbacks
-include accept, declined, status, etc. as defined by BSeR IG. 
+For Recipient, GTRI developed a recipient simulator. Recipient system needs to parse the e-Referral request messages 
+appropriately based on the use cases defined in the BSeR IG. The parsed data should then be delivered to the service 
+management to process the request. The service management should then send feedbacks as responses to the initiator 
+during the course of referred service(s). 
+
+The recipient simulator takes to e-Referral request FHIR bundle over an API, generates feedbacks and responds with
+feedbacks. The feedbacks include accept, declined, status, etc. as defined by BSeR IG. Figure 3 depicts the recipient
+simulator.
+
+.. image::
+   images/BSER_RI_Recipient_Sim.png
+   :width: 460pt
+   :alt: Recipient simulator
+
+**Figure 3**\ : Recipient Simulator
+
+
+Useful Links
+------------
+
+Currently, GTRI sandbox is being migrated to new infrastructure. Once this migration is finished, links will be 
+provided for the service instances.
+
+
+.. note::
+   All artifacts developed for the proof-of-concept implemenations are available in https://github.com/BSeR-PoC. 
+   Any issues or comments can be made using the GitHub's Issues option under each repository.
+
