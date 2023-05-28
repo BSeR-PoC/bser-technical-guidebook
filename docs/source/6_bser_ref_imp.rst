@@ -45,13 +45,15 @@ The recipient also has a BSeR App that implements the following features for ser
 
 The architecture describes the BSeR App in the recicpient to support various interfaces to the service management platform.
 However, not every service provider is equipped with a modern network technology for the managment tool. To support more 
-providers, the architecture includes not only APIs but also Emails or File Transfers. BSeR App in the recipient, once receives 
-the e-Referral request, parses the request, respond to the initiator with a HTTP status, and then hands the request data 
-over to the service management system through the interface(s).
+providers, the architecture includes not only APIs but also Emails or File Transfers for the interfaces to the service management
+platform. 
 
 .. note::
-   **FHIR messaging operation** is defined in https://hl7.org/fhir/R4/messageheader-operation-process-message.html. BSeR Apps
-   in initiator and recipient should implement proper operation modes as it is defined and needed.
+   For recipients with a manual system for the service managment such as emails or sftp, BSeR App may need to provide 
+   a dashboard for the recipient users to maually trigger the service feedbacks.
+
+BSeR App in the recipient, once receives the e-Referral request, parses the request, responds to the initiator with a HTTP status, and then hands the request data 
+over to the service management system through the interface(s).
 
 
 Initiator (Clinical Provider)
