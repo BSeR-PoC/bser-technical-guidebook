@@ -1,5 +1,5 @@
-BSeR FHIR Implementation Guide Companion Guide
-==============================================
+BSeR FHIR IG Companion Guide
+============================
 
 .. toctree::
     bser_fhir_ig/1_introduction
