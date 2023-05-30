@@ -13,9 +13,7 @@ Check out the :doc:`3_bser_overview` page for further information about BSeR.
    :hidden:
 
    1_fhir
-   2_1_fhir_ig_intro
-   2_2_fhir_ig_profiles
-   2_3_fhir_ig_terminology
+   2_fhir_ig
    3_bser_overview
    4_bser_fhir_ig
    5_bser_ref_imp

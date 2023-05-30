@@ -1,5 +1,5 @@
 FHIR IGs: Introduction
-==============================================
+======================
 
 This document is intended to be an introduction to FHIR Implementation Guides (commonly referred to as FHIR IGs) and how they are used, as well as some examples of what an implementation guide would normally contain and links to more in-depth reading. This document is not intended to be a complete walkthrough of everything about FHIR IGs but should be a good beginning point for a user to understand what they mean and how to begin using them.
 
