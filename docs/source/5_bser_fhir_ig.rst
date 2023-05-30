@@ -1,2 +1,0 @@
-BSeR FHIR Implementation Guide
-==============================
