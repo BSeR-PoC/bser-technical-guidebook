@@ -17,6 +17,9 @@ There are two core actors involved in the actual data exchange during the refera
 
 **Recipient** - The recipient is the entity which receives the referral and is responsible for the the requested intervention. For the purposes of the BSeR FHIR IG, this is a extra-clinical community partner who offers programs to meet patient needs such as chronic condition management or similar services.
 
+.. note::
+   The BSeR FHIR IG follows convention "order/service request" workflows. In base FHIR and other standards like HL7v2, the roles are commonly labeled as "Placer" and "Filler". These roles are equivalent to "Initiator" and "Recipient" respectively. The initiator *places* an order, while the recipient *fills* the order. The PLAC and FILL codes are likewise used where appropriate in BSeR profiles, such as the ServiceRequest and Task resources, to discrimate between the two entities. For more information, please see the :doc:`4_profiles` section.
+
 Messaging
 ^^^^^^^^^
 The BSeR Implementation Guide documents data exchange using a "messaging" model. This model of data exchange in BSeR occurs as a referral initiator (typically a clinical entity) will send a FHIR Message Bundle to a recipient (typically a non clincial partner). Historically, this is equivalent to common uses of the HL7v2 messaging standard.
@@ -37,13 +40,13 @@ In BSeR, the directionality of the messages is described as "request" (initiator
    ../images/bser_fhir_ig/bi_messaging.png
    :alt: Bidirectional Messaging 
 
-In the context of FHIR, the messaging is captured in the guide through FHIR resources or expectations for API implementations such as operations. This makes up the outermost layer of the BSeR data structure, starting with the BSeR Referral Message Bundle profile. That profile goes together with the BSeR Referral MessageHeader profile. For more information, please see the :doc:`3_profiles` section.
+In the context of FHIR, the messaging is captured in the guide through FHIR resources or expectations for API implementations such as operations. This makes up the outermost layer of the BSeR data structure, starting with the BSeR Referral Message Bundle profile. That profile goes together with the BSeR Referral MessageHeader profile. For more information, please see the :doc:`4_profiles` section.
 
 State and Workflow Management
 -----------------------------
 ** TODO: Add discussion of state management. **
 
-One of the largest challenges of the bidirectional loop described is in proper state management. The BSeR IG mostly handles this through a "Service Request" and a "Task" related to that Service Request. The Service Request covers the actual referral request, while the Task represents the actual performance of the activity requested. More information on the structure of the FHIR resource representation can be found in the :doc:`3_profiles` section.
+One of the largest challenges of the bidirectional loop described is in proper state management. The BSeR IG mostly handles this through a "Service Request" and a "Task" related to that Service Request. The Service Request covers the actual referral request, while the Task represents the actual performance of the activity requested. More information on the structure of the FHIR resource representation can be found in the :doc:`4_profiles` section.
 
 For a simplified example of state transitions of an ongoing referral, you might expect the following states (with each state transitioning into the following one).
 

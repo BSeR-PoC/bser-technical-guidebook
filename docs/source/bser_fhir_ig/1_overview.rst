@@ -1,10 +1,21 @@
-Introduction
-============
-** TODO: Add in additional BSeR Overview Information here. **
+Overview
+========
+** TODO: Add in additional BSeR Overview Information here based on what CDC would like to cover. **
 
 The Bidirectional Services eReferral (BSeR) FHIR Implementation Guide (IG) defines how to support referrals between clinical and non-clinical partners using the FHIR specification.
 
 This companion guide is intended to supplement the Implementation Guide, providing a linear onboarding on how to get started with and understand the nuances of the BSeR FHIR IG. For specifics such as profile constraints, please always consult the BSeR FHIR IG directly.
+
+
+Implementation Stakeholders
+---------------------------
+** TODO: Placeholder. Flesh this out more, small blurb added based on feedback **
+
+When implementing the BSeR FHIR IG to support electronic referrals, it is helpful to include all relevant stakeholders in the implementation process.
+
+* Clinical Team
+* EMR/EHR Development Team
+* Non-clinical Team
 
 
 Use Cases
