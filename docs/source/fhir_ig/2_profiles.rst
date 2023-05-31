@@ -55,7 +55,7 @@ Preferred is going to be the least common binding strength found both in the FHI
 
 Value sets must exist somewhere for a data element to have a binding relationship with it. Most commonly they will be found within the realm of HL7 terminology, but can also exist within CDC's PHINVADS, NIH's VSAC, or can be defined within the FHIR IG as a ValueSet within the IG (see ValueSets for more information on custom ValueSets).
 
-The table below shows how a binding strength could be changed in a profile (note that the constraining profile can change either the strength or the value set of the bidning, but whatever the profile does, it cannot make codes valid that are invalid in the base specification):
+The table below shows how a binding strength could be changed in a profile (note that the constraining profile can change either the strength or the value set of the binding, but whatever the profile does, it cannot make codes valid that are invalid in the base specification):
 
 +------------------------+----------+------------+-----------+---------+
 | Derived (across)       | required | extensible | preferred | example |

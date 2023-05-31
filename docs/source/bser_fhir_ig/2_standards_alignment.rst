@@ -17,7 +17,7 @@ A basic example of US Core inheritance can be seen with the BSeR Practitioner pr
 
 Constrained References
 ^^^^^^^^^^^^^^^^^^^^^^
-For implementors, the case of a constrained reference from the BSeR IG to a US Core profile is more saliant. A major example in BSeR is the use of the US Core Patient profile. In the BSeR Referral Task profile, the `Task.for` element, which provides a reference to the patient who is the subject of the referral, can be seen to be constrained to explicitly `Reference(US Core Patient Profile)`.
+For implementors, the case of a constrained reference from the BSeR IG to a US Core profile is more salient. A major example in BSeR is the use of the US Core Patient profile. In the BSeR Referral Task profile, the `Task.for` element, which provides a reference to the patient who is the subject of the referral, can be seen to be constrained to explicitly `Reference(US Core Patient Profile)`.
 
 Patient Demographics and Social Determinants of Health
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

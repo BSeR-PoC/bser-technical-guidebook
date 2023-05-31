@@ -34,9 +34,9 @@ For more information on extending into additional use cases, please see the rele
 
 Social Determinants of Health
 -----------------------------
-Social Determinants of Health (SDoH) are an important area of data collection, and may be included as part of the referral process to support both program elibility as well as public health needs. What constitutes Social Determinants of Health are broad generally, though for the BSeR FHIR IG, collection is limited to employment status, education level, and general demographic information such as race and ethnicity.
+Social Determinants of Health (SDoH) are an important area of data collection, and may be included as part of the referral process to support both program eligibility as well as public health needs. What constitutes Social Determinants of Health are broad generally, though for the BSeR FHIR IG, collection is limited to employment status, education level, and general demographic information such as race and ethnicity.
 
-** TODO: ADD IN A BLURB TO EXPLAIN SDOH DATA COLLECTION FOR THE CDC NEEDS HERE **
+** TODO: Add in a blurb to explain SDOH data collection for the CDC needs here **
 
 In the U.S., standardizing SDoH data with FHIR is an active area of development. This is tied heavily with the US Core Data for
 Interoperability (USCDI) requirements, which in turn. For additional information, please see the standards alignment section of this document, which includes discussion of U.S. Core as well as the Gravity SDoH for Clinical Care FHIR Implementation Guide.
