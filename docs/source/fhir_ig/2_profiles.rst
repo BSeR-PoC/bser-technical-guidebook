@@ -1,5 +1,5 @@
 FHIR IGs: Profiles
-==========================================
+==================
 
 Profiles are going to be the most common conformance resource found in a FHIR IG. A profile is a set of rules around how a FHIR resource should be used in the context of the IG, as well as any additional elements that may need to be added to support the use case of the IG. Profiles can be created for any FHIR resource needed for the context of the IG, such as Patient, Condition, or Observation. There are at least six different ways that a profile can constrict or “change” (change being a loose term since profiles are not changing the base FHIR specification) a FHIR resource:
 
@@ -55,7 +55,7 @@ Preferred is going to be the least common binding strength found both in the FHI
 
 Value sets must exist somewhere for a data element to have a binding relationship with it. Most commonly they will be found within the realm of HL7 terminology, but can also exist within CDC's PHINVADS, NIH's VSAC, or can be defined within the FHIR IG as a ValueSet within the IG (see ValueSets for more information on custom ValueSets).
 
-The table below shows how a binding strength could be changed in a profile (note that the constraining profile can change either the strength or the value set of the bidning, but whatever the profile does, it cannot make codes valid that are invalid in the base specification):
+The table below shows how a binding strength could be changed in a profile (note that the constraining profile can change either the strength or the value set of the binding, but whatever the profile does, it cannot make codes valid that are invalid in the base specification):
 
 +------------------------+----------+------------+-----------+---------+
 | Derived (across)       | required | extensible | preferred | example |
@@ -85,7 +85,7 @@ Slicing
 A common feature found in profiles in a FHIR IG is slicing. Slicing is the act of taking an element that may appear multiple times (for example, in a list) and splitting the list into a series of sub-lists, each with different restrictions on those sub-lists. This is an example taken from the FHIR specification:
 
 .. image::
-   images/fhir_slicing.png
+   ../images/fhir_ig/fhir_slicing.png
    :width: 350pt
    :alt: FHIR Slicing
 
@@ -116,7 +116,7 @@ US Core Patient
 Shown below is the differential table from the US Core Patient Profile:
 
 .. image::
-   images/fhir_patient.png
+   ../images/fhir_ig/fhir_patient.png
    :width: 500pt
    :alt: FHIR Patient Resource
 
@@ -127,7 +127,7 @@ US Core Laboratory Result Observation
 Shown below is the differential table from the US Core Laboratory Result Observation Profile:
 
 .. image::
-   images/fhir_observation.png
+   ../images/fhir_ig/fhir_observation.png
    :width: 500pt
    :alt: FHIR Observation Resource
 
@@ -142,7 +142,7 @@ Sometimes when profiling FHIR for your use case, you may come across a situation
 Sometimes, you may need to have multiple values to represent the full meaning of an extension and instead of doing multiple extensions, you can have an extension which contains sub-extensions. This is referred to as a complex extension, and excellent examples of this are the US Core Race and Ethnicity extensions. Both contain three sub-extensions: a required extension with a url of ombCategory and a valueCoding from the OMB Race Categories ValueSet, an optional extension with a url of detailed and a valueCoding from the Detailed Race ValueSet, and a required extension with a url of text and a valueString. The StructureDefinition for the US Core Race extension is shown below:
 
 .. image::
-   images/fhir_extension.png
+   ../images/fhir_ig/fhir_extension.png
    :width: 500pt
    :alt: FHIR Extension
 

@@ -12,17 +12,13 @@ Relevant Profiles:
 - BSeR Education Level
 - Occupational Data for Health (ODH) Employment Status
 
-The BSeR Referral Message Bundle is the wrapper for every message exchanged during the BSeR workflow. In base FHIR, a Message Bundle is a Bundle resource with a
-type set to `"message"` and the first entry being a MessageHeader resource. For BSeR, this MessageHeader must be compliant to the BSeR Referral MessageHeader
-profile. The BSeR Referral Message Bundle profile additionally adds three slices in the list of entries for Employment Status, Patient Consent, and Employment
-Level.
+The BSeR Referral Message Bundle is the wrapper for every message exchanged during the BSeR workflow. In base FHIR, a Message Bundle is a Bundle resource with a type set to `"message"` and the first entry being a MessageHeader resource. For BSeR, this MessageHeader must be compliant to the BSeR Referral MessageHeader profile. The BSeR Referral Message Bundle profile additionally adds three slices in the list of entries for Employment Status, Patient Consent, and Employment Level.
 
 .. include:: ../examples/bser_fhir_ig/basic-message-bundle.json
     :code: json
 
 
-The BSeR Referral MessageHeader constrains the base resource to use references to specific BSeR profiles such as the BSeR Referral Recipient Practitioner Role,
-BSeR Referral Initiator Practitioner Role, and the BSeR Referral Task.
+The BSeR Referral MessageHeader constrains the base resource to use references to specific BSeR profiles such as the BSeR Referral Recipient Practitioner Role, BSeR Referral Initiator Practitioner Role, and the BSeR Referral Task.
 
 
 BSeR Referral Task and Service Request Profiles
@@ -42,7 +38,7 @@ Relevant Profiles:
 
 There are two BSeR profiles constraining PractionerRole, one for the initiator and one for the recipient. In base FHIR, the PractitionerRole is used to connect a Practitioner, as an individual, to specific organizations or services.
 
-In BSeR, in addition to the US Core PractitionerRole constraints, the Referral Initiator PractitionerRole requires (cardinality of `1..1`) references to both a BSeR Practitioner and BSeR Organization, with an additional optional reference (cardinality of `0..1`) to the BSeR Service Delivery Location. Note that the three non-PractitionerRole profiles are generic to both the initiator and recipient. This set of profiles should capture all relevant information as determined by the referrer's system, typically in the form of the referring healthcare provider as the BSeR Practitioner profile and then the referrer's organization as the BSeR Organization profile. The BSeR Service Delivery Location may be included here if relevant, for example if it is important to represent a specific, more granular, source of the referral not addressed by the Organizatiion (e.g., "Referred by Dr. Smith at Health USA from the Atlanta office").
+In BSeR, in addition to the US Core PractitionerRole constraints, the Referral Initiator PractitionerRole requires (cardinality of `1..1`) references to both a BSeR Practitioner and BSeR Organization, with an additional optional reference (cardinality of `0..1`) to the BSeR Service Delivery Location. Note that the three non-PractitionerRole profiles are generic to both the initiator and recipient. This set of profiles should capture all relevant information as determined by the referrer's system, typically in the form of the referring healthcare provider as the BSeR Practitioner profile and then the referrer's organization as the BSeR Organization profile. The BSeR Service Delivery Location may be included here if relevant, for example if it is important to represent a specific, more granular, source of the referral not addressed by the Organization (e.g., "Referred by Dr. Smith at Health USA from the Atlanta office").
 
 ** TODO: Discuss the above a bit with Lantana to ensure intent. **
 
