@@ -1,0 +1,2 @@
+Example Scenario with Resources
+===============================

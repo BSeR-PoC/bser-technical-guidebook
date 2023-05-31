@@ -1,12 +1,16 @@
 Profile Breakdown and Bundle Structure
 ======================================
-(Note: As of this writing (2023-05-10) the guide is undergoing heavy revision for the 2.0.0 release. Certain details are pending the complete 2.0.0 version.)
+(Note: As of this writing (2023-05-30) the guide is undergoing heavy revision for the 2.0.0 release. Certain details are pending the complete 2.0.0 version.)
 
 BSeR Referral Message Bundle
 ----------------------------
 Relevant Profiles:
-- BSeR Profiles: BSeR Referral Message Bundle, BSeR Referral Message Bundle, BSeR Patient Consent, BSeR Education Level
-- External Profiles: Occupational Data for Health (ODH) Employment Status
+
+- BSeR Referral Message Bundle
+- BSeR Referral MessageHeader
+- BSeR Patient Consent
+- BSeR Education Level
+- Occupational Data for Health (ODH) Employment Status
 
 The BSeR Referral Message Bundle is the wrapper for every message exchanged during the BSeR workflow. In base FHIR, a Message Bundle is a Bundle resource with a
 type set to `"message"` and the first entry being a MessageHeader resource. For BSeR, this MessageHeader must be compliant to the BSeR Referral MessageHeader
@@ -27,7 +31,12 @@ BSeR Referral Task and Service Request Profiles
 BSeR Initiator and Recipient Profiles
 -------------------------------------
 Relevant Profiles:
-- BSeR Profiles: BSeR Referral Initiator Practitioner Role, BSeR Referral Recipient Practitioner Role, BSeR Practitioner, BSeR Organization, BSeR Service Delivery Location
+
+- BSeR Referral Initiator Practitioner Role
+- BSeR Referral Recipient Practitioner Role
+- BSeR Practitioner
+- BSeR Organization
+- BSeR Service Delivery Location
 
 There are two BSeR profiles constraining PractionerRole, one for the initiator and one for the recipient.
 

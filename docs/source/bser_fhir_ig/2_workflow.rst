@@ -3,7 +3,7 @@ Data Exchange Workflow
 To support the BSeR workflows, the IG can be broadly broken down into three distinct areas:
 
 - Bidirectional Data Exchange
-- State Management
+- State and Workflow Management
 - Patient Information
 
 Bidirectional Data Exchange
@@ -39,13 +39,22 @@ In BSeR, the directionality of the messages is described as "request" (initiator
 
 In the context of FHIR, the messaging is captured in the guide through FHIR resources or expectations for API implementations such as operations. This makes up the outermost layer of the BSeR data structure, starting with the BSeR Referral Message Bundle profile. That profile goes together with the BSeR Referral MessageHeader profile. For more information, please see the :doc:`3_profiles` section.
 
-State Management
-----------------
+State and Workflow Management
+-----------------------------
 ** TODO: Add discussion of state management. **
 
-Workflow management is handled through the ServiceRequest, Task, Coverage, and a supplemental Observation resource. These capture the current state of the
-referral (e.g., "Accepted"), and additional non-clinical/non-intervention related data such as insurance coverage or system specific identifiers on both the
-initiator and recipient sides. For more information, please see the :doc:`3_profiles` section.
+One of the largest challenges of the bidirectional loop described is in proper state management. The BSeR IG mostly handles this through a "Service Request" and a "Task" related to that Service Request. The Service Request covers the actual referral request, while the Task represents the actual performance of the activity requested. More information on the structure of the FHIR resource representation can be found in the :doc:`3_profiles` section.
+
+For a simplified example of state transitions of an ongoing referral, you might expect the following states (with each state transitioning into the following one).
+
+.. image:: 
+   ../images/bser_fhir_ig/basic_state_example.png
+   :alt: Bidirectional Messaging 
+
+In addition to the state of the service itself, the workflow must consider additional data such as patient consent and insurance coverage. It is presumed these are captured on the intiator side and supplied through the message sent to recipients.
+
+.. note::
+   Individual resources such as Observations or Procedures may also include their own status considerations tied to internal workflows. This is considered outside of the scope of the BSeR FHIR IG and not included in the discussion herein. It may be able to be broadly assumed that any observational data provided as part of the referral is in a "final" state and not likely to be revised (such as due to being entered in error) though all implementers should consider this on a case by case basis.
 
 Patient Information
 -------------------

@@ -7,3 +7,4 @@ BSeR FHIR IG Companion Guide
     bser_fhir_ig/2_workflow
     bser_fhir_ig/3_profiles
     bser_fhir_ig/4_standards_alignment
+    bser_fhir_ig/5_example
