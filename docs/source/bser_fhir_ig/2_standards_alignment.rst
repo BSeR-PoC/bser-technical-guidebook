@@ -13,7 +13,7 @@ The Office of the National Coordinator's United States Core Data for Interoperab
 
 Profile Inheritance
 ^^^^^^^^^^^^^^^^^^^
-A basic example of US Core inheritance can be seen with the BSeR Practitioner profile (Link: https://build.fhir.org/ig/HL7/bser/StructureDefinition-BSeR-Practitioner.html). This profile's "Type" is shown as "USCorePractitionerProfile". The US Core Practitioner Profile is then derived from the base FHIR Practitioner resource. This is largely for validation and more for servers to be concerned with, most implementors do not need to worry about additional handling for this sort of inheritance as conformance to the BSeR profiles ensures conformance to the underlying US Core profile.
+A basic example of US Core inheritance can be seen with the Referral ServiceRequest profile (Link: http://build.fhir.org/ig/HL7/bser/StructureDefinition-referral-servicerequest.html). This profile's "Type" is shown as "USCoreServiceRequestProfile". The US Core ServiceRequest Profile is then derived from the base FHIR ServiceRequest resource. This is largely for validation and more for servers to be concerned with, most implementors do not need to worry about additional handling for this sort of inheritance as conformance to the BSeR profiles ensures conformance to the underlying US Core profile.
 
 Constrained References
 ^^^^^^^^^^^^^^^^^^^^^^

@@ -1,6 +1,8 @@
 Fast Healthcare Interoperability Resources (FHIR)
 =================================================
 
+Why should I have a basic understanding of FHIR while utilizing this guidebook? FHIR is the foundational standard that the BSeR workflow in this guidebook is built off of. FHIR defines the data structures and transactions that make up the bi-directional workflow, and having a basic understanding of the standard will allow the reader to understand the guidebook more comprehensively.
+
 FHIR is a standard for exchanging healthcare information electronically, designed to facilitate interoperability and data exchange between different healthcare systems. It represents a modern and web-based approach to healthcare data sharing, enabling applications to seamlessly share and access data in a consistent and standardized format. FHIR leverages a RESTful API (Application Programming Interface) architecture, making it easy to implement and integrate with existing systems.
 
 FHIR revolves around the concept of modular components called "resources." These resources represent different types of clinical and administrative data in healthcare. They are based on standard healthcare data models and encompass entities such as patients, practitioners, medications, observations, and appointments. FHIR resources are structured using a standardized data formats such as XML (eXtended Markup Language) and JSON (JavaScript Object Notation), both of which have support for complex data structures. By utilizing these common data formats, FHIR ensures that data can be accurately exchanged and understood across different systems.

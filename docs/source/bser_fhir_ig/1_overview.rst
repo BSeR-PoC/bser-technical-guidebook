@@ -7,11 +7,11 @@ The Bidirectional Services eReferral (BSeR) FHIR Implementation Guide (IG) defin
 This companion guide is intended to supplement the Implementation Guide, providing a linear onboarding on how to get started with and understand the nuances of the BSeR FHIR IG. For specifics such as profile constraints, please always consult the BSeR FHIR IG directly.
 
 
-Implementation Stakeholders
----------------------------
+Implementation Collaborators
+----------------------------
 ** TODO: Placeholder. Flesh this out more, small blurb added based on feedback **
 
-When implementing the BSeR FHIR IG to support electronic referrals, it is helpful to include all relevant stakeholders in the implementation process.
+When implementing the BSeR FHIR IG to support electronic referrals, it is helpful to include all relevant collaborators in the implementation process.
 
 * Clinical Team
 * EMR/EHR Development Team
@@ -38,5 +38,4 @@ Social Determinants of Health (SDoH) are an important area of data collection, a
 
 ** TODO: Add in a blurb to explain SDOH data collection for the CDC needs here **
 
-In the U.S., standardizing SDoH data with FHIR is an active area of development. This is tied heavily with the US Core Data for
-Interoperability (USCDI) requirements, which in turn. For additional information, please see the standards alignment section of this document, which includes discussion of U.S. Core as well as the Gravity SDoH for Clinical Care FHIR Implementation Guide.
+In the U.S., standardizing SDoH data with FHIR is an active area of development, which is tied in heavily with the US Core Data for Interoperability (USCDI) requirements. For additional information, please see the standards alignment section of this document, which includes discussion of U.S. Core as well as the Gravity SDoH for Clinical Care FHIR Implementation Guide.
