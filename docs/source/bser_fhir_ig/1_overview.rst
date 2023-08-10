@@ -7,15 +7,14 @@ The Bidirectional Services eReferral (BSeR) FHIR Implementation Guide (IG) defin
 This companion guide is intended to supplement the Implementation Guide, providing a linear onboarding on how to get started with and understand the nuances of the BSeR FHIR IG. For specifics such as profile constraints, please always consult the BSeR FHIR IG directly.
 
 
-Implementation Collaborators
-----------------------------
-** TODO: Placeholder. Flesh this out more, small blurb added based on feedback **
+Implementating the BSeR FHIR IG
+-------------------------------
 
-When implementing the BSeR FHIR IG to support electronic referrals, it is helpful to include all relevant collaborators in the implementation process.
+Implementation of the BSeR FHIR IG requires the participation of diverse groups across multiple organizations. It is helpful to include everyone who may be involved in the implementation process early. This includes, but is not limited to:
 
-* Clinical Team
-* EMR/EHR Development Team
-* Non-clinical Team
+* Clinical Teams - Practitioners, Administrative staff, etc. who will be sending referrals
+* Non-Clinical Teams - Community organizations or others who will be receiving referrals
+* Technical Teams - EMR/EHR or other tool developers, IT specialists, etc.
 
 
 Use Cases

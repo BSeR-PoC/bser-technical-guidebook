@@ -41,7 +41,6 @@ html_theme_options = {
     "site_url": "https://bsertechguide.readthedocs.io/",
     "repo_url": "https://github.com/BSeR-PoC/bser-technical-guidebook/",
     "repo_name": "bser-technical-guidebook",
-    "repo_type": "github",
     "palette": [
         {
             "media": "(prefers-color-scheme: light)",
