@@ -7,7 +7,7 @@ The Bidirectional Services eReferral (BSeR) FHIR Implementation Guide (IG) defin
 This companion guide is intended to supplement the Implementation Guide, providing a linear onboarding on how to get started with and understand the nuances of the BSeR FHIR IG. For specifics such as profile constraints, please always consult the BSeR FHIR IG directly.
 
 
-Implementating the BSeR FHIR IG
+Implementing the BSeR FHIR IG
 -------------------------------
 
 Implementation of the BSeR FHIR IG requires the participation of diverse groups across multiple organizations. It is helpful to include everyone who may be involved in the implementation process early. This includes, but is not limited to:
