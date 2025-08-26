@@ -1,3 +1,5 @@
+.. _bser_fhir_ig_companion_guide:
+
 ############################
 BSeR FHIR IG Companion Guide
 ############################

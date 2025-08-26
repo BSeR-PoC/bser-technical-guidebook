@@ -38,7 +38,7 @@ html_theme_options = {
         "repo": "fontawesome/brands/github",
         "edit": "material/file-edit-outline",
     },
-    "site_url": "https://bsertechguide.readthedocs.io/",
+    "site_url": "https://bser-technical-guidebook.readthedocs.io/",
     "repo_url": "https://github.com/BSeR-PoC/bser-technical-guidebook/",
     "repo_name": "bser-technical-guidebook",
     "palette": [
