@@ -40,18 +40,14 @@ There are two BSeR profiles constraining PractionerRole, one for the initiator a
 
 In BSeR, in addition to the US Core PractitionerRole constraints, the Referral Initiator PractitionerRole requires (cardinality of `1..1`) references to both a BSeR Practitioner and BSeR Organization, with an additional optional reference (cardinality of `0..1`) to the BSeR Service Delivery Location. Note that the three non-PractitionerRole profiles are generic to both the initiator and recipient. This set of profiles should capture all relevant information as determined by the referrer's system, typically in the form of the referring healthcare provider as the BSeR Practitioner profile and then the referrer's organization as the BSeR Organization profile. The BSeR Service Delivery Location may be included here if relevant, for example if it is important to represent a specific, more granular, source of the referral not addressed by the Organization (e.g., "Referred by Dr. Smith at Health USA from the Atlanta office").
 
-** TODO: Discuss the above a bit with Lantana to ensure intent. **
-
 For the Referral Recipient, the related PractitionerRole has no explicit requirements. If the information is known at time of referral creation, it should be included, though in many cases information such as the individual provider or service delivery location might not be known by the initiator depending on the recipient organization's handling of referrals.
-
-** TODO: Break out "required" vs "optional" a bit more to focus on onboarding with the required elements, and split up scope of concerns by initiator and recipient. **
 
 
 BSeR Referral Request Document Bundle
 -------------------------------------
-** TODO: Placeholder. Under active development/revision in the IG. -- Need to see how the bundle nesting plays out before addressing this and the following sections. **
+** Placeholder. Under active development/revision in the IG. -- Need to see how the bundle nesting plays out before addressing this and the following sections. **
 
 
 BSeR Referral Feedback Document Bundle
 --------------------------------------
-** TODO: Placeholder. Under active development/revision in the IG. **
+** Placeholder. Under active development/revision in the IG. **

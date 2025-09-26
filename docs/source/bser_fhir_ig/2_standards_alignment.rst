@@ -33,11 +33,9 @@ Additional Resources:
 
 Gravity Social Determinants of Health for Clinical Care
 -------------------------------------------------------
-** TODO: Placeholder. Under active development/revision in the IG. **
+** Placeholder. Under active development/revision in the IG. **
 
 
 Occupational Data for Health
 ----------------------------
 The Occupational Data for Health (ODH) FHIR IG is heavily adopted for usage in standardizing data relating to occupation, such as usual work or industry. The BSeR FHIR IG leverages the ODH FHIR IG's Employment Status profile to represent the subject of the referral's current state of employment, which may impact referral criteria.
-
-** TODO: Need feedback on CDC/YUSA/etc. on this section to determine relevance/usage of some data. **
